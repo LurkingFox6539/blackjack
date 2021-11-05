@@ -18,7 +18,7 @@ struct DefineCard {
 	int cardStatus; // 0 = In play || 1 = In Deck || 2 = In discard
 }
 
-Deck[53]; // Deck [52] used for shuffeling.
+Deck[53]; // Deck [52] used for shuffling.
 
 
 void cardDeck() {
