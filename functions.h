@@ -21,23 +21,23 @@ void sleep(int a) {
 //	Allows input to have all cards in the hand flipped face up (default false)
 void printHand(vector<DefineCard> thisHand, bool flipcards = false) {
 	for (int i = 0; i < size(thisHand); i++) {
-		cout << underline"           " << unUnderline"  ";
+		cout << underline"\t           " << unUnderline"  ";
 	}
 	cout << endl;
 	for (int i = 0; i < size(thisHand); i++) {
-		if (thisHand.at(i).facedown && !flipCards) cout << "|" << "Facedown |  ";
-		else cout << "|" << setw(2) << thisHand[i].face << ' ' << thisHand[i].suit << "     |  ";
+		if (thisHand.at(i).facedown && !flipCards) cout << "\t|" << "Facedown |  ";
+		else cout << "\t|" << setw(2) << thisHand[i].face << ' ' << thisHand[i].suit << "     |  ";
 	}
 	cout << endl;
 	for (int i = 0; i < 4; i++) {
 		for (int i = 0; i < size(thisHand); i++) {
-			cout << "|         |  ";
+			cout << "\t|         |  ";
 		}
 		cout << endl;
 	}
 	for (int i = 0; i < size(thisHand); i++) {
-		if (thisHand.at(i).facedown && !flipCards) cout << underline"| Facedown|" << unUnderline"  ";
-		else cout << underline"|     " << setw(2) << thisHand[i].face << ' ' << thisHand[i].suit << "|" << unUnderline"  ";
+		if (thisHand.at(i).facedown && !flipCards) cout << underline"\t| Facedown|" << unUnderline"  ";
+		else cout << underline"\t|     " << setw(2) << thisHand[i].face << ' ' << thisHand[i].suit << "|" << unUnderline"  ";
 	}
 	cout << endl;
 }
