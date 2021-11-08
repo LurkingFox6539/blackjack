@@ -1,5 +1,5 @@
 # blackjack
-
+/Modified Nov 8 2021, Jacob Hanson
 
 
 
