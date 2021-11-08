@@ -24,7 +24,8 @@ void printHand(vector<DefineCard> thisHand) {
 	}
 	cout << endl;
 	for (int i = 0; i < size(thisHand); i++) {
-		cout << "|" << setw(2) << thisHand[i].face << ' ' << thisHand[i].suit << "     |  ";
+		if (thisHand.at(i).facedown == false) cout << "|" << setw(2) << thisHand[i].face << ' ' << thisHand[i].suit << "     |  ";
+		else cout << "|" << "Facedown |  ";
 	}
 	cout << endl;
 	for (int i = 0; i < 4; i++) {
@@ -34,7 +35,8 @@ void printHand(vector<DefineCard> thisHand) {
 		cout << endl;
 	}
 	for (int i = 0; i < size(thisHand); i++) {
-		cout << underline"|     " << setw(2) << thisHand[i].face << ' ' << thisHand[i].suit << "|" << unUnderline"  ";
+		if (thisHand.at(i).facedown == false) cout << underline"|     " << setw(2) << thisHand[i].face << ' ' << thisHand[i].suit << "|" << unUnderline"  ";
+		cout << underline"| Facedown|" << unUnderline"  ";
 	}
 	cout << endl;
 }
