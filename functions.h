@@ -36,7 +36,7 @@ void printHand(vector<DefineCard> thisHand) {
 	}
 	for (int i = 0; i < size(thisHand); i++) {
 		if (thisHand.at(i).facedown == false) cout << underline"|     " << setw(2) << thisHand[i].face << ' ' << thisHand[i].suit << "|" << unUnderline"  ";
-		cout << underline"| Facedown|" << unUnderline"  ";
+		else cout << underline"| Facedown|" << unUnderline"  ";
 	}
 	cout << endl;
 }
