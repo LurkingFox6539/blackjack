@@ -33,13 +33,15 @@ vector<DefineCard> houseHand;
 vector<DefineCard> playerHand;
 
 //	Adds a card to the inputted hand (playerHand or houseHand)
-void addCard(vector<DefineCard>& hand) {
+//	Allows input for whether the card should be facedown down or not (default false)
+void addCard(vector<DefineCard>& hand, bool facedown = false) {
 	int i = 0;
 	while (Deck[0 + i].cardStatus != 1) {
 		i++;
 	}
 	hand.push_back(Deck[0 + i]);
 	Deck[0 + i].cardStatus = 0;
+	Deck[0 + i].facedown = facedown;
 }
 
 //	Initializes all the cards in the deck to their base values
