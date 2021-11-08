@@ -1,3 +1,8 @@
+/*	modified November 8 2021, Mark Wheeler III
+*		changed card strings to their numbers and letter instead of words
+*		changed strings for suits to symbols for the suits
+*/
+
 #ifndef _DECK_
 #define _DECK_
 
@@ -12,7 +17,7 @@ using namespace std;
 
 
 struct DefineCard {
-	string suit;
+	char suit;
 	string face;
 	int pointsValue; //Face => 10 -- Ace's => 1 or 11
 	int cardStatus; // 0 = In play || 1 = In Deck || 2 = In discard
@@ -24,9 +29,9 @@ Deck[53]; // Deck [52] used for shuffling.
 void cardDeck() {
 	srand((unsigned)time(0));
 	int New_Suit = 0;
-	string faces[13] = { "Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King" };
-	string suits[4] = { "Diamonds", "Clubs", "Hearts", "Spades" };
+	string faces[13] = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
 	string Status[3] = { "In Play", "In Deck", "Discard Pile" };
+	char suits[4] = { '\x04', '\x05', '\x03', '\x06' };
 	int CardValue[13] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
 	for (int x = 0; x < 52; x++)
 	{
