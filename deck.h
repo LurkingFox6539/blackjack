@@ -28,13 +28,18 @@ struct DefineCard {
 	bool facedown = false;
 }
 
-Deck[53]; // Deck [52] used for shuffling.
+Deck[53];
+vector<DefineCard> houseHand;
 vector<DefineCard> playerHand;
 
-//	First input is the hand (i.e. playerHand) and second is the card to add (i.e. Deck[0])
-//	-Not complete but functional
-void addCard(vector<DefineCard>& hand, DefineCard& card) {
-	hand.push_back(card);
+//	Adds a card to the inputted hand (playerHand or houseHand)
+void addCard(vector<DefineCard>& hand) {
+	int i = 0;
+	while (Deck[0 + i].cardStatus != 1) {
+		i++;
+	}
+	hand.push_back(Deck[0 + i]);
+	Deck[0 + i].cardStatus = 0;
 }
 
 //	Initializes all the cards in the deck to their base values
@@ -55,7 +60,8 @@ void initializeDeck() {
 			New_Suit++;
 	}
 }
-	
+
+//	Shuffles the deck
 void shuffleDeck() {
 	srand((unsigned)time(0));
 	for (int x = 0; x < 600; x++)
