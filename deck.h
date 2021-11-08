@@ -39,9 +39,9 @@ void addCard(vector<DefineCard>& hand, bool facedown = false) {
 	while (Deck[0 + i].cardStatus != 1) {
 		i++;
 	}
+	Deck[0 + i].facedown = facedown;
 	hand.push_back(Deck[0 + i]);
 	Deck[0 + i].cardStatus = 0;
-	Deck[0 + i].facedown = facedown;
 }
 
 //	Initializes all the cards in the deck to their base values
