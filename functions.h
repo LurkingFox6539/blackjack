@@ -18,14 +18,15 @@ void sleep(int a) {
 }
 
 //	Prints the cards in the hand you input. Input playerHand or houseHand
-//	Allows input to have all cards in the hand flipped face up (default false)
+//	Allows input to have all cards in the hand flipped face up (default false)\
+// 	"flipCards" changed to "flipcards" to prevent error.
 void printHand(vector<DefineCard> thisHand, bool flipcards = false) {
 	for (int i = 0; i < size(thisHand); i++) {
 		cout << underline"\t           " << unUnderline"  ";
 	}
 	cout << endl;
 	for (int i = 0; i < size(thisHand); i++) {
-		if (thisHand.at(i).facedown && !flipCards) cout << "\t|" << "Facedown |  ";
+		if (thisHand.at(i).facedown && !flipcards) cout << "\t|" << "Facedown |  ";
 		else cout << "\t|" << setw(2) << thisHand[i].face << ' ' << thisHand[i].suit << "     |  ";
 	}
 	cout << endl;
@@ -36,7 +37,7 @@ void printHand(vector<DefineCard> thisHand, bool flipcards = false) {
 		cout << endl;
 	}
 	for (int i = 0; i < size(thisHand); i++) {
-		if (thisHand.at(i).facedown && !flipCards) cout << underline"\t| Facedown|" << unUnderline"  ";
+		if (thisHand.at(i).facedown && !flipcards) cout << underline"\t| Facedown|" << unUnderline"  ";
 		else cout << underline"\t|     " << setw(2) << thisHand[i].face << ' ' << thisHand[i].suit << "|" << unUnderline"  ";
 	}
 	cout << endl;
