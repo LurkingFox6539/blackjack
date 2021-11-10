@@ -9,21 +9,21 @@
 int makeDecision() {
 	int playerValue = 0;
 	int houseValue = 0;
-	for (int i = 0; i < size(playerHand); i++) {
-		playerValue += playerHand.at(i).pointsValue;
+	for (int i = 0; i < size(players[1].hand); i++) {
+		playerValue += players[1].hand.at(i).pointsValue;
 	}
-	for (int i = 0; i < size(houseHand); i++) {
-		houseValue += houseHand.at(i).pointsValue;
+	for (int i = 0; i < size(players[0].hand); i++) {
+		houseValue += players[0].hand.at(i).pointsValue;
 	}
 	while (houseValue < playerValue) {
-		for (int i = 0; i < size(houseHand); i++) {
-			houseValue += houseHand.at(i).pointsValue;
+		for (int i = 0; i < size(players[0].hand); i++) {
+			houseValue += players[0].hand.at(i).pointsValue;
 		}
 		if (playerValue <= 21) {
-			addCard(houseHand);
+			addCard(players[0].hand);
 			system("cls");
-			printHand(houseHand);
-			printHand(playerHand);
+			printHand(players[0].hand);
+			printHand(players[1].hand);
 		}
 	}
 	if (playerValue > 21) return 0;
