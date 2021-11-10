@@ -2,7 +2,7 @@
 *		changed card strings to their numbers and letter instead of words
 *		changed strings for suits to symbols for the suits
 *		removed outputs and added the playerHand vector
-*		also split the deck initializing and shuffling and added 
+*		also split the deck initializing and shuffling and added
 *		facedown bool to card struct
 */
 
@@ -22,15 +22,22 @@ using namespace std;
 
 struct DefineCard {
 	char suit = '\0';
-	string face = "\0";
+	string face = "\1";
 	int cardStatus = 0;
 	int pointsValue = 0;
 	bool facedown = false;
-}
+};
 
-Deck[53];
-vector<DefineCard> houseHand;
-vector<DefineCard> playerHand;
+struct Player {
+	vector<DefineCard> hand;
+	int handValue = 0;
+	int monsLeft = 0;
+	int betsIn = 0;
+};
+
+DefineCard Deck[53];
+Player players[2];
+
 
 //	Adds a card to the inputted hand (playerHand or houseHand)
 //	Allows input for whether the card should be facedown down or not (default false)
@@ -44,13 +51,18 @@ void addCard(vector<DefineCard>& hand, bool facedown = false) {
 	Deck[0 + i].cardStatus = 0;
 }
 
+//	Input the hand to remove the card from, followed by the card's position starting from 0
+void removeCard(vector<DefineCard>& hand, int cardPos) {
+	hand.erase(hand.begin() + cardPos);
+}
+
 //	Initializes all the cards in the deck to their base values
 void initializeDeck() {
 	int New_Suit = 0;
 	string faces[13] = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
 	string Status[3] = { "In Play", "In Deck", "Discard Pile" };
 	char suits[4] = { '\x04', '\x05', '\x03', '\x06' };
-	int CardValue[13] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 };
+	int CardValue[13] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10 };
 	for (int x = 0; x < 52; x++)
 	{
 
