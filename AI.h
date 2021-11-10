@@ -3,7 +3,7 @@
 #ifndef _AI_
 #define _AI_
 
-#include "deck.h";
+#include "deck.h"
 #include "functions.h"
 
 int makeDecision() {
