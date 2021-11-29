@@ -43,4 +43,26 @@ void printHand(vector<DefineCard> thisHand, bool flipcards = false) {
 	cout << endl;
 }
 
+void deleteHand() {
+	for (int i = 0; i <= size(players[0].hand) + 1; i++) {
+		removeCard(players[0].hand, 0);
+	}
+	for (int i = 0; i <= size(players[1].hand) + 1; i++) {
+		removeCard(players[1].hand, 0);
+	}
+}
+
+void setHands() {
+	addCard(players[0].hand, true);
+	addCard(players[1].hand);
+	addCard(players[0].hand);
+	addCard(players[1].hand);
+}
+
+void fakeBet() {
+	cout << "Your bet = 0\n";
+}
+
+
+
 #endif
