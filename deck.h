@@ -35,8 +35,18 @@ struct Player {
 	int betsIn = 0;
 };
 
+Player players[3];
+
+struct AceValue {
+	int value(Player player = players[2]) {
+		if ((player.handValue + 11) > 21) return 1;
+		else if ((player.handValue + 11) <= 21) return 11;
+		else return 1;
+	}
+};
+
 DefineCard Deck[53];
-Player players[2];
+AceValue ace;
 
 
 //	Adds a card to the inputted hand (playerHand or houseHand)
