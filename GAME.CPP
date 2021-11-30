@@ -9,7 +9,8 @@
 #include "AI.h"
 using namespace std;
 
-char choice;
+char choice, pchoice;
+
 
 int main() {
 	initializeDeck();
@@ -25,6 +26,30 @@ int main() {
 
 		sleep(1);
 
+		//players play - hit or stand
+		
+		do {
+			cout << "\n\tDo you Hit(H) or Stand(S): ";
+			cin >> pchoice;
+			if (pchoice == 'h' || pchoice == 'H') {
+				cout << "Hit - heres a card.\n";
+				addCard(players[1].hand);
+				sleep(1);
+				system("cls");
+				printHand(players[0].hand);
+				printHand(players[1].hand);
+				
+			}
+			else if (pchoice == 's' || pchoice == 'S') {
+				cout << "You stand - no cards dealt.\n";
+				
+			}
+			else {
+				cout << "Invalid choice - Choose Hit or Stand.\n";
+				pchoice == 'h';
+			}
+		} while (pchoice == 'H' || pchoice == 'h');
+
 		//manage bets
 		fakeBet();
 
@@ -36,6 +61,11 @@ int main() {
 		printHand(players[0].hand); printHand(players[1].hand); sleep(1);
 		cout << makeDecision();
 
+		cout << endl;
+
+		for (int i = 0; i < size(players[1].hand); i++) {
+			cout << players[1].hand.at(i).pointsValue << endl;
+		}
 
 		//allocate money to designated palce
 
@@ -44,9 +74,9 @@ int main() {
 		cout << endl;
 		cout << "Challenge the House again? (Y/N): ";
 		cin >> choice;
-
-		deleteHand();
+		choice = tolower(choice);
+		deleteHand(players[0].hand); deleteHand(players[1].hand);
 		system("cls");
-	} while (choice == 'Y');
+	} while (choice == 'y' );
 	
 }
