@@ -63,6 +63,12 @@ void fakeBet() {
 	cout << "Your bet = 0\n";
 }
 
+void showHand() {
+	cout << "\t\t   House\n";
+	sleep(0.5); printHand(players[0].hand); sleep(0.5);  printHand(players[1].hand);
+	cout << "\n\t\t   Player\n" << endl;
+}
+
 
 
 #endif
