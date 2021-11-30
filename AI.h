@@ -19,8 +19,10 @@ int makeDecision() {
 		setValue();
 	}
 	system("cls");
+	cout << "\t\t   House\n";
 	printHand(players[0].hand);
 	printHand(players[1].hand);
+	cout << "\n\t\t   Player\n";
 
 	if (players[1].handValue > 21) {
 		cout << "Player's Hand exceeds 21, player goes bust.\n";
