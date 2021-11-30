@@ -22,8 +22,7 @@ int main() {
 
 		//set hands show hands
 		setHands();
-		sleep(1); printHand(players[0].hand); sleep(1);  printHand(players[1].hand);
-
+		showHand();
 		sleep(1);
 
 		//players play - hit or stand
@@ -32,20 +31,18 @@ int main() {
 			cout << "\n\tDo you Hit(H) or Stand(S): ";
 			cin >> pchoice;
 			if (pchoice == 'h' || pchoice == 'H') {
-				cout << "Hit - heres a card.\n";
+				cout << "\tHit - heres a card.\n";
 				addCard(players[1].hand);
 				sleep(1);
 				system("cls");
-				printHand(players[0].hand);
-				printHand(players[1].hand);
-				
+				showHand();
 			}
 			else if (pchoice == 's' || pchoice == 'S') {
-				cout << "You stand - no cards dealt.\n";
+				cout << "\tYou stand - no cards dealt.\n";
 				
 			}
 			else {
-				cout << "Invalid choice - Choose Hit or Stand.\n";
+				cout << "\tInvalid choice - Choose Hit or Stand.\n";
 				pchoice == 'h';
 			}
 		} while (pchoice == 'H' || pchoice == 'h');
@@ -58,7 +55,7 @@ int main() {
 
 		//reprint hands post card flip
 		players[0].hand.at(0).facedown = false;
-		printHand(players[0].hand); printHand(players[1].hand); sleep(1);
+		showHand();
 		cout << makeDecision();
 
 		cout << endl;
