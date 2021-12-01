@@ -70,26 +70,5 @@ void showHand() {
 }
 
 
-void playerHit() {
-	do {
-		cout << "\n\tDo you Hit(H) or Stand(S): ";
-		cin >> pchoice;
-		pchoice = tolower(pchoice);
-		if (pchoice == 'h') {
-			cout << "\tHit - heres a card.\n";
-			addCard(players[1].hand);
-			sleep(1);
-			system("cls");
-			showHand();
-		}
-		else if (pchoice == 's') {
-			cout << "\tYou stand - no cards dealt.\n";
-		}
-		else {
-			cout << "\tInvalid choice - Choose Hit or Stand.\n";
-			pchoice == 'h';
-		}
-	} while (pchoice == 'h');
-}
 
 #endif
