@@ -26,27 +26,8 @@ int main() {
 		sleep(1);
 
 		//players play - hit or stand
-		
-		do {
-			cout << "\n\tDo you Hit(H) or Stand(S): ";
-			cin >> pchoice;
-			if (pchoice == 'h' || pchoice == 'H') {
-				cout << "\tHit - heres a card.\n";
-				addCard(players[1].hand);
-				sleep(1);
-				system("cls");
-				showHand();
-			}
-			else if (pchoice == 's' || pchoice == 'S') {
-				cout << "\tYou stand - no cards dealt.\n";
-				
-			}
-			else {
-				cout << "\tInvalid choice - Choose Hit or Stand.\n";
-				pchoice == 'h';
-			}
-		} while (pchoice == 'H' || pchoice == 'h');
-
+		playerHit();
+	
 		//manage bets
 		fakeBet();
 
@@ -57,15 +38,12 @@ int main() {
 		players[0].hand.at(0).facedown = false;
 		showHand();
 		cout << makeDecision();
-
 		cout << endl;
-
 		for (int i = 0; i < size(players[1].hand); i++) {
 			cout << players[1].hand.at(i).pointsValue << endl;
 		}
 
 		//allocate money to designated palce
-
 
 		//ask for re-run
 		cout << endl;
