@@ -9,14 +9,39 @@
 #include "AI.h"
 using namespace std;
 
-char choice, pchoice;
 
+bool bankVal = false;
+char choice, pchoice;
 
 int main() {
 	initializeDeck();
 
 	do {
 		shuffleDeck();
+
+
+		//Set bank value
+		do {
+			try {
+				cout << "How much money would you like to start with? : ";
+				cin >> players[1].monsLeft;
+
+				if (players[1].monsLeft > 1000000) {
+					bankVal = false;
+					throw players[1].monsLeft;
+				}
+				else {
+					bankVal = true;
+				}
+			}
+			catch (int bank) {
+				cout << "That number is to big. 1,000,000 is the largest value, please lower your value.\n";
+				sleep(2);
+				system("cls");
+			}
+		} while (!bankVal);
+		
+		system("cls");
 
 		//set bets
 
@@ -47,6 +72,7 @@ int main() {
 		} while (pchoice == 'h');
 	
 		//manage bets
+		cout << "\n Heres how much money you have: " << players[1].monsLeft << endl;
 		fakeBet();
 
 		system("pause");
