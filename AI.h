@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _AI_
-#define _AI_
+#ifndef _AITWO_
+#define _AITWO_
 
 #include "deck.h"
 #include "functions.h"
@@ -8,6 +8,8 @@ using namespace std;
 
 void setValue();
 
+// Very simple program allowing the computer to act as the house following the very strict rules set out in blackjack.
+// If the house's hand is less than 17 they continue to draw cards. Returns a value depending on the comparison of player and house's hand
 int makeDecision() {
 	setValue();
 	while (players[0].handValue < 17) {
@@ -19,22 +21,12 @@ int makeDecision() {
 		setValue();
 	}
 	system("cls");
-	cout << "\t\t   House\n";
 	printHand(players[0].hand);
 	printHand(players[1].hand);
-	cout << "\n\t\t   Player\n";
 
 	if (players[1].handValue > 21) {
 		cout << "Player's Hand exceeds 21, player goes bust.\n";
 		return 0;
-	}
-	else if (players[0].handValue < players[1].handValue) {
-		cout << "Player has beat House. Congrats Player.\n";
-		return 1;
-	}
-	else if (players[0].handValue == players[1].handValue) {
-		cout << "Player and House are equal. Bets are returned.\n";
-		return 2;
 	}
 	else if (players[0].handValue > players[1].handValue && players[0].handValue < 21) {
 		cout << "House has won the game, with a value of " << players[0].handValue << "!\n";
@@ -52,30 +44,42 @@ int makeDecision() {
 		cout << "Player hit a Black Jack. Congrats player.\n";
 		return 6;
 	}
+	else if (players[0].handValue < players[1].handValue) {
+		cout << "Player has beat House. Congrats Player.\n";
+		return 1;
+	}
+	else if (players[0].handValue == players[1].handValue) {
+		cout << "Player and House are equal. Bets are returned.\n";
+		return 2;
+	}
 }
 
+// Sets the value of the respective hands. It does this by skipping aces and incrementing numAces, adding the value of other cards to the handValue
+// and then looping for the number of aces found and adding one or eleven depending on whether or not it would make the hand value go over 21
 void setValue(){
+	int numAces = 0;
 	players[0].handValue = 0;
 	players[1].handValue = 0;
 	players[2].handValue = 0;
 
-	for (int i = 0; i < size(players[1].hand); i++) {
-		if (players[1].hand.at(i).face == "A") {
-			int aVal = ace.value(players[1]);
-			players[1].handValue += aVal;
-		}
-		else {
-			players[1].handValue += players[1].hand.at(i).pointsValue;
-		}
-	}
+	// Sets value of the House's hand
 	for (int i = 0; i < size(players[0].hand); i++) {
-		if (players[0].hand.at(i).face == "A") {
-			int aVal = ace.value(players[0]);
-			players[0].handValue += aVal;
-		}
-		else {
-			players[0].handValue += players[0].hand.at(i).pointsValue;
-		}
+		if (players[0].hand.at(i).face == "A") numAces++;
+		else players[0].handValue += players[0].hand.at(i).pointsValue;
+	}
+	for (int i = 0; i < numAces; i++, numAces--) {
+		if ((players[0].handValue + 11) > 21) players[0].handValue += 1;
+		else players[0].handValue += 11;
+	}
+
+	// Sets value of the player's hand
+	for (int i = 0; i < size(players[1].hand); i++) {
+		if (players[1].hand.at(i).face == "A") numAces++;
+		else players[1].handValue += players[1].hand.at(i).pointsValue;
+	}
+	for (int i = 0; i < numAces; i++, numAces--) {
+		if ((players[1].handValue + 11) > 21) players[1].handValue += 1;
+		else players[1].handValue += 11;
 	}
 }
 
