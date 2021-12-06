@@ -66,6 +66,11 @@ void removeCard(vector<DefineCard>& hand, int cardPos) {
 	hand.erase(hand.begin() + cardPos);
 }
 
+//delete hand
+void deleteHand(vector<DefineCard>& hand) {
+	hand.erase(hand.begin(), hand.end());
+}
+
 //	Initializes all the cards in the deck to their base values
 void initializeDeck() {
 	int New_Suit = 0;
