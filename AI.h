@@ -6,6 +6,8 @@
 #include "functions.h"
 using namespace std;
 
+int isWin = 0;
+
 void setValue();
 
 // Very simple program allowing the computer to act as the house following the very strict rules set out in blackjack.
@@ -24,7 +26,7 @@ int makeDecision() {
 	printHand(players[0].hand);
 	printHand(players[1].hand);
 
-	if (players[1].handValue > 21) {
+if (players[1].handValue > 21) {
 		cout << "Player's Hand exceeds 21, player goes bust.\n";
 		return 0;
 	}
@@ -34,18 +36,21 @@ int makeDecision() {
 	}
 	else if (players[0].handValue > players[1].handValue && players[0].handValue > 21) {
 		cout << "House hand exceeds 21, House goes bust. Congrats player.\n";
+		isWin = 1;
 		return 4;
 	}
 	else if (players[0].handValue > players[1].handValue && players[0].handValue == 21) {
-		cout << "House hit a Black Jack. Player looses.\n";
+		cout << "House hit a Black Jack. Player has lost.\n";
 		return 5;
 	}
 	else if (players[1].handValue > players[0].handValue && players[1].handValue == 21) {
 		cout << "Player hit a Black Jack. Congrats player.\n";
+		isWin = 1;
 		return 6;
 	}
 	else if (players[0].handValue < players[1].handValue) {
 		cout << "Player has beat House. Congrats Player.\n";
+		isWin = 1;
 		return 1;
 	}
 	else if (players[0].handValue == players[1].handValue) {
