@@ -134,24 +134,28 @@ int main() {
 
 			} while (betting2); 
 
+			
 			//reprint hands post card flip
 			players[0].hand.at(0).facedown = false;
 			showHand();
 			cout << makeDecision();
 			cout << endl;
-			for (int i = 0; i < size(players[1].hand); i++) {
-				cout << players[1].hand.at(i).pointsValue << endl;
+
+			//allocate money to designated palce
+			if (isWin == 1) {
+				returnBet(2, players[1]);
 			}
-		}
 
-		//allocate money to designated palce
-		if (isWin == 1) {
-			returnBet(2, players[1]);
-		}
+			cout << " Total Money: " << players[1].monsLeft; 
 
+			//for (int i = 0; i < size(players[1].hand); i++) {
+				//cout << players[1].hand.at(i).pointsValue << endl;
+			//}
+		}
+		
 		//ask for re-run
 		cout << endl;
-		cout << "Challenge the House again? (Y/N): ";
+		cout << "\n Challenge the House again? (Y/N): ";
 		cin >> rechoice;
 		rechoice = tolower(rechoice);
 		deleteHand(players[1].hand); deleteHand(players[0].hand);
