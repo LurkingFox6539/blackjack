@@ -71,6 +71,7 @@ int main() {
 		setHands();
 		showHand();
 		sleep(1);
+		setValue();
 
 		//players play - hit or stand
 		do {
