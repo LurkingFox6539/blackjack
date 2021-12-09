@@ -4,14 +4,10 @@
 
 
 TODO :::::::::::::::::::::::::::::::::::
-Everything needed to complete Black Jack
+Mark :: Upload either finished or working edition of button black jack. Make another branch where we can put keyboard black jack.
+Jacob :: Upload current edition of keyboard black jack. Wait for button black jack. 
 
-1. Betting - a way to bet fake money. Allow the player to choose their amount of money. Functions for the house to return money
-based on the rules of Black Jack. Allow the player to keep or trash their money. 
-2. Player Hits - while the player can pick up cards - check if they pass a point value of 21. That is an instant loss. 
-3. Obv - Remove debug stats or create a second project to use as final.
-4. OPTIONAL: Make a save file to save a players data so they may return to fight the house. 
-
+Almost done!
 
 
 
