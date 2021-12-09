@@ -4,7 +4,9 @@
 
 
 TODO :::::::::::::::::::::::::::::::::::
+
 Mark :: Upload either finished or working edition of button black jack. Make another branch where we can put keyboard black jack.
+
 Jacob :: Upload current edition of keyboard black jack. Wait for button black jack. 
 
 Almost done!
