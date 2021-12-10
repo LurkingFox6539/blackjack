@@ -20,32 +20,23 @@ using namespace std;
 
 
 struct DefineCard {
-	char suit = '\0';
-	string face = "\1";
-	int cardStatus = 0;
-	int pointsValue = 0;
-	bool facedown = false;
+	char suit = '\0';			// The suit of the card
+	string face = "\1";			// The number/face of the card
+	int cardStatus = 0;			// 0 is in play, 1 is in the deck
+	int pointsValue = 0;		// Value of the card according to blackjack rule
+	bool facedown = false;		// If the card should be printed as a facedown card
 };
 
 struct Player {
-	vector<DefineCard> hand;
-	int handValue = 0;
-	int monsLeft = 0;
-	int betsIn = 0;
+	vector<DefineCard> hand;	// A vector that dynamically stores a set of cards from the DefineCard struct
+	int handValue = 0;			// The current value of the player's hand
+	int monsLeft = 0;			// The amount of money the player has
+	int betsIn = 0;				// Current amount of money being bet
 };
 
+// Player 0 is the house, player 1 is the player, and player 2 is a dummy
 Player players[3];
-
-struct AceValue {
-	int value(Player player = players[2]) {
-		if ((player.handValue + 11) > 21) return 1;
-		else if ((player.handValue + 11) <= 21) return 11;
-		else return 1;
-	}
-};
-
 DefineCard Deck[53];
-AceValue ace;
 
 
 //	Adds a card to the inputted hand (playerHand or houseHand)
@@ -65,7 +56,7 @@ void removeCard(vector<DefineCard>& hand, int cardPos) {
 	hand.erase(hand.begin() + cardPos);
 }
 
-//delete hand
+// Deletes the inputted player's hand
 void deleteHand(vector<DefineCard>& hand) {
 	hand.erase(hand.begin(), hand.end());
 }
