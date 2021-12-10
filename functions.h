@@ -18,8 +18,7 @@ void sleep(int a) {
 }
 
 //	Prints the cards in the hand you input. Input playerHand or houseHand
-//	Allows input to have all cards in the hand flipped face up (default false)\
-// 	"flipCards" changed to "flipcards" to prevent error.
+//	Allows input to have all cards in the hand flipped face up (default false)
 void printHand(vector<DefineCard> thisHand, bool flipcards = false) {
 	for (int i = 0; i < size(thisHand); i++) {
 		cout << underline"\t           " << unUnderline"  ";
@@ -43,15 +42,14 @@ void printHand(vector<DefineCard> thisHand, bool flipcards = false) {
 	cout << endl;
 }
 
-void deleteHand() {
-	for (int i = 0; i <= size(players[0].hand) + 1; i++) {
-		removeCard(players[0].hand, 0);
-	}
-	for (int i = 0; i <= size(players[1].hand) + 1; i++) {
-		removeCard(players[1].hand, 0);
-	}
+//	Prints a card meant to look like the deck, used for drawing
+void printDeck() {
+	cout << underline"\t           " << unUnderline"      " << underline"         "<< unUnderline"\n"
+		<< "\t| Deck    |\t " << underline"| STAND |" << unUnderline" \n\t|         |\n\t|         |\n\t|         |\n\t|         |\n\t"
+		<< underline"|    Deck |" << unUnderline"\n";
 }
 
+// Adds two cards to each player's hand for the beginning of the game
 void setHands() {
 	addCard(players[0].hand, true);
 	addCard(players[1].hand);
@@ -59,16 +57,11 @@ void setHands() {
 	addCard(players[1].hand);
 }
 
-void fakeBet() {
-	cout << "Your bet = 0\n";
-}
-
+// Prints the main UI for the game
 void showHand() {
-	cout << "\t\t   House\n";
+	cout << "\t\t   House - " << players[0].handValue << endl;
 	sleep(0.5); printHand(players[0].hand); sleep(0.5);  printHand(players[1].hand);
-	cout << "\n\t\t   Player\n" << endl;
+	cout << "\n\t\t   Player - " << players[1].handValue << endl;
 }
-
-
 
 #endif
