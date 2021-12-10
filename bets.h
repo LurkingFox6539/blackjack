@@ -4,6 +4,9 @@
 #define _BETS_
 
 #include "AI.h"
+char rechoice, hchoice, bchoice;
+int betIn = 0, newbet = 0, tempBet = 0;
+bool bankVal = false, betting = false, betting2 = true, hitLoop = false, newBetLoop = false, addBetLoop = false, reLoop = false;
 
 //	Adds a set amount to the target's bet and removes the same amount from their current money
 void addBet(int add, Player& player) {
