@@ -2,8 +2,8 @@
 #ifndef _AITWO_
 #define _AITWO_
 
-#include "deck.h"
 #include "functions.h"
+#include "buttons.h"
 using namespace std;
 
 int isWin = 0;
@@ -17,17 +17,17 @@ int makeDecision() {
 	while (players[0].handValue < 17) {
 		setValue();
 		addCard(players[0].hand);
-		system("cls");
+		clear();
 		printHand(players[0].hand);
 		printHand(players[1].hand);
 		setValue();
 	}
-	system("cls");
+	clear();
 	printHand(players[0].hand);
 	printHand(players[1].hand);
 
 	if (players[1].handValue > 21) {
-		cout << "\n Player's Hand exceeds 21, player goes bust.\n";
+		cout << "\n Player's Hand exceeds 21, player goes bust.";
 		return 0;
 	}
 	else if (players[0].handValue > players[1].handValue && players[0].handValue < 21) {
@@ -40,7 +40,7 @@ int makeDecision() {
 		return 4;
 	}
 	else if (players[0].handValue > players[1].handValue && players[0].handValue == 21) {
-		cout << "\n House hit a Black Jack. Player has lost.\n";
+		cout << "\n House hit a Black Jack. Player loses.\n";
 		return 5;
 	}
 	else if (players[1].handValue > players[0].handValue && players[1].handValue == 21) {
@@ -61,7 +61,7 @@ int makeDecision() {
 
 // Sets the value of the respective hands. It does this by skipping aces and incrementing numAces, adding the value of other cards to the handValue
 // and then looping for the number of aces found and adding one or eleven depending on whether or not it would make the hand value go over 21
-void setValue(){
+void setValue() {
 	int numAces = 0;
 	players[0].handValue = 0;
 	players[1].handValue = 0;
